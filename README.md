@@ -1,6 +1,6 @@
 # Recipe Bank 2
 
-1. Improve App.jsx so it won't take so much time to rerender
+1.Improve App.jsx so it won't take so much time to rerender
 1. Allow users to edit, and delete recipes
    1. there should be a button near each recipe called edit and delete
    1. When clicking edit, all the fields should become editable

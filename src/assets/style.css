@@ -17,6 +17,11 @@ body {
   margin: 0;
 }
 
+.navbar a{
+  color: #fff;
+  text-decoration: none;
+}
+
 .footer {
   background-color: #333;
   color: #fff;
@@ -50,4 +55,15 @@ body {
 
 .recipe p {
   margin-top: 0;
+}
+
+button{
+  background-color: #333;
+  padding: 10px 30px;
+  color: #f5f5f5;
+  text-transform: uppercase;
+  border-radius: 20px;
+  font-size: large;
+  border: none;
+  margin: 0 10px;
 }
