@@ -21,16 +21,8 @@ function App() {
     return () => console.log("unmounted");
   }, []);
   
-  // function filterRecipesComputeIntensive(recipes) {
-  //   const now = performance.now();
-  //   while (performance.now() - now < 1000) {
-  //     //spin()
-  //   }
-  //   return recipes
-  // }
-  // const filteredRecipes = useMemo(()=> filterRecipesComputeIntensive(recipes), [recipes]);
 
-  const updateRecipe = (editedRecipe) => {
+  const updateRecipe = ({editedRecipe}) => {
     const updatedRecipes = recipes.map((r) =>
       r.id === editedRecipe.id ? editedRecipe : r
     );
@@ -48,7 +40,7 @@ function App() {
     <>
       <Navbar />
       {recipes.map((data) => (
-        <RecipeContainer recipe={data} key={data.id} onUpdateRecipe={updateRecipe} onDeleteRecipe={deleteRecipe} />
+        <RecipeContainer recipe={data} key={data.id} updateRecipe={updateRecipe} onDeleteRecipe={deleteRecipe} />
       ))}
       <Footer />
     </>

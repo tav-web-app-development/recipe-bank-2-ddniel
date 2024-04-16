@@ -1,14 +1,21 @@
 import { useState } from "react";
 
 /* eslint-disable react/prop-types */
-function RecipeContainer({ recipe, onDeleteRecipe }) {
+function RecipeContainer({ recipe, onDeleteRecipe, updateRecipe }) {
   
   const [isEditing, setIsEditing] = useState(false)
-  const [editedRecipe, setEditedRecipe] = useState({ ...recipe });
+  const [editedRecipe, setEditedRecipe] = useState({...recipe});
   
-  const handleEditClick = ()=> {
-    setIsEditing(!isEditing)
-
+  const handleEditClick = (e)=> {
+    
+    if (e.target.value === 'Save'){
+      updateRecipe({editedRecipe})
+      setIsEditing(!isEditing)
+    } else if (e.target.value ==='Edit') {
+      setEditedRecipe({...recipe})
+      setIsEditing(!isEditing)
+    }
+    
   }
 
   const handleInputChange = (e) => {
@@ -37,18 +44,18 @@ function RecipeContainer({ recipe, onDeleteRecipe }) {
       >
         <div className="recipe">
           <h2>{isEditing ? (<input type="text" name="title" value={editedRecipe.title}
-                onChange={handleInputChange}></input>) : (editedRecipe.title)}</h2>
+                onChange={handleInputChange}></input>) : (recipe.title)}</h2>
           <p>
             <strong>Description:</strong>
-            {isEditing ? (<input type="text" name="description" value={editedRecipe.description} onChange={handleInputChange}></input>) : (editedRecipe.description)}
+            {isEditing ? (<input type="text" name="description" value={editedRecipe.description} onChange={handleInputChange}></input>) : (recipe.description)}
           </p>
           <p>
             <strong>Ingredients:</strong> {isEditing ? (<textarea type="text" name="ingredients" value={editedRecipe.ingredients}
-                onChange={handleInputChange} rows={8} cols={90}></textarea>) : (editedRecipe.ingredients)}
+                onChange={handleInputChange} rows={8} cols={90}></textarea>) : (recipe.ingredients)}
           </p>
           <p>
             <strong>Directions:</strong> {isEditing ? (<textarea type="text" name="directions" value={editedRecipe.directions}
-                onChange={handleInputChange} rows={12} cols={90}></textarea>) : (editedRecipe.directions)}
+                onChange={handleInputChange} rows={12} cols={90}></textarea>) : (recipe.directions)}
           </p>
           <img
             src={recipe.photoUrl}
@@ -58,7 +65,7 @@ function RecipeContainer({ recipe, onDeleteRecipe }) {
           />
 
           <div className="buttons-container">
-            <button onClick={handleEditClick} >{ isEditing ? "Save": "Edit"}</button>
+            <button onClick={handleEditClick} value={isEditing ? "Save": "Edit"} >{ isEditing ? "Save": "Edit"}</button>
             <button onClick={handleDeleteClick}>Delete</button>
           </div>
         </div>
