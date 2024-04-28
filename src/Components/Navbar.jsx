@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+
 function Navbar() {
   
   const scrollToBottom = () => {
@@ -14,7 +17,7 @@ function Navbar() {
       <div className="navbar">
         <h1>Recipe App</h1>
         <nav>
-          <ul>
+          <ul className="links-container">
             <li>
               <a href="#">Home</a>
             </li>
@@ -28,8 +31,11 @@ function Navbar() {
               <a href="#">Contact</a>
             </li>
             <li>
+              <Link to='/new-recipe'>New Recipe</Link>
+            </li>
+            <li>
               <a href="#" onClick={scrollToBottom}>
-                End of Page
+                ⬇️
               </a>
             </li>
           </ul>

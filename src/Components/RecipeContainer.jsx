@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { RecipesContext } from "../store/recipes-context";
+
+
 
 /* eslint-disable react/prop-types */
-function RecipeContainer({ recipe, onDeleteRecipe, updateRecipe }) {
-  
+function RecipeContainer({ recipe }) {
+  const {updateRecipe, onDeleteRecipe} = useContext(RecipesContext)
+
   const [isEditing, setIsEditing] = useState(false)
   const [editedRecipe, setEditedRecipe] = useState({...recipe});
   

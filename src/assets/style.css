@@ -13,13 +13,21 @@ body {
   justify-content: space-between;
 }
 
+ul{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
 .navbar h1 {
   margin: 0;
 }
 
+
 .navbar a{
   color: #fff;
   text-decoration: none;
+  padding-right: 30px;
 }
 
 .footer {
