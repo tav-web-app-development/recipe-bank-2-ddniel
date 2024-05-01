@@ -4,7 +4,8 @@ export const RecipesContext = createContext({
     items: [],
     setRecipes: ()=>{},
     updateRecipe: () => {},
-    deleteRecipe: () => {},
+    onDeleteRecipe: () => {},
+    newRecipe: () => {}
 })
 
 
@@ -39,13 +40,18 @@ export default function RecipesContextProvider({children}){
     setRecipes(filteredRecipes);
   };
 
+  const addNewRecipe = (newRecipe) => {
+    setRecipes((prevRecipes) => ([...prevRecipes, newRecipe]))
+  } 
+
     
 
     const ctxValue = {
         items: recipes,
         setRecipes: setRecipes,
         updateRecipe: updateRecipe,
-        deleteRecipe: deleteRecipe 
+        onDeleteRecipe: deleteRecipe,
+        addNewRecipe: addNewRecipe 
     }
     
     return <RecipesContext.Provider value={ctxValue}>
